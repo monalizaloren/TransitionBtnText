@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transição de Div com Opacidade</title>
+    <style>
+        /* Estilos CSS personalizados */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Coloca os botões no canto esquerdo */
+            margin-left: 20px; /* Adiciona um pequeno espaço à esquerda */
+        }
+
+        .button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #258cd1;
+        }
+
+        /* Estilos CSS para divs específicas de cada botão */
+        .div-1,
+        .div-2,
+        .div-3,
+        .div-4,
+        .div-5 {
+            display: none; /* Inicialmente, todas as divs estão ocultas */
+            opacity: 0; /* Define a opacidade inicial como 0 */
+            transition: opacity 0.3s; /* Adiciona uma transição de opacidade */
+        }
+
+        .div-1.show,
+        .div-2.show,
+        .div-3.show,
+        .div-4.show,
+        .div-5.show {
+            display: block; /* Exibe a div correspondente quando a classe "show" é aplicada */
+            opacity: 1; /* Define a opacidade como 1 para mostrar a div */
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button onclick="changeDiv(1)">Botão 1</button>
+        <button onclick="changeDiv(2)">Botão 2</button>
+        <button onclick="changeDiv(3)">Botão 3</button>
+        <button onclick="changeDiv(4)">Botão 4</button>
+        <button onclick="changeDiv(5)">Botão 5</button>
+    </div>
+
+    <!-- Divs específicas de cada botão -->
+    <div class="div-1">Conteúdo do Botão 1</div>
+    <div class="div-2">Conteúdo do Botão 2</div>
+    <div class="div-3">Conteúdo do Botão 3</div>
+    <div class="div-4">Conteúdo do Botão 4</div>
+    <div class="div-5">Conteúdo do Botão 5</div>
+
+    <script>
+        
+        const divs = document.querySelectorAll('.div-1, .div-2, .div-3, .div-4, .div-5');
+
+        function changeDiv(buttonNumber) {
+            // Oculta todas as divs específicas
+            divs.forEach(div => div.style.opacity = 0);
+
+            // Exibe a div correspondente ao botão pressionado após um curto período de tempo
+            setTimeout(function () {
+                const targetDiv = document.querySelector(`.div-${buttonNumber}`);
+                targetDiv.style.opacity = 1;
+            }, 100);
+        }
+    </script>
+</body>
+</html>
