@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transição de Texto com Opacidade</title>
+    <style>
+        /* Estilos CSS personalizados */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Coloca os botões no canto esquerdo */
+            margin-left: 20px; /* Adiciona um pequeno espaço à esquerda */
+        }
+
+        .button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #258cd1;
+        }
+
+        .text-container {
+            flex: 1; /* Ocupa o espaço restante na linha */
+            display: flex;
+            justify-content: flex-end; /* Coloca o texto no canto direito */
+            align-items: center;
+            padding-right: 20px; /* Adiciona um pequeno espaço à direita */
+        }
+
+        .text {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button onclick="changeText('Texto do Botão 1')">Botão 1</button>
+        <button onclick="changeText('Texto do Botão 2')">Botão 2</button>
+        <button onclick="changeText('Texto do Botão 3')">Botão 3</button>
+        <button onclick="changeText('Texto do Botão 4')">Botão 4</button>
+        <button onclick="changeText('Texto do Botão 5')">Botão 5</button>
+    </div>
+    <div class="text-container">
+        <div class="text">Texto Inicial</div>
+    </div>
+
+    <script>
+        
+        function changeText(newText) {
+            const textElement = document.querySelector('.text');
+            textElement.style.opacity = 0;
+            setTimeout(() => {
+                textElement.textContent = newText;
+                textElement.style.opacity = 1;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
